@@ -5,6 +5,7 @@ docker-compose up -d
 ```
 Efetuado testes utilizando Ubuntu 20.04
 ```
+apt install multipass
 multipass launch --cpus 2 --mem 4G --disk 15G --name sonarqube-test
 multipass shell sonarqube-test
 sudo su
