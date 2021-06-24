@@ -15,7 +15,7 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update; \
   sudo apt-get install -y apt-transport-https && \
   sudo apt-get update && \
-  sudo apt-get install -y dotnet-sdk-5.0 unzip git default-jre
+  sudo apt-get install -y dotnet-sdk-5.0 unzip git default-jre nodejs
 wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip
 unzip sonar-scanner-cli-4.6.2.2472-linux.zip -d /opt
 export PATH=$PATH:/opt/sonar-scanner-4.6.2.2472-linux/bin
