@@ -26,7 +26,7 @@ pipeline {
                  sh 'echo Analise SonarQube'
                  sh 'dotnet-sonarscanner begin /k:"Dotnet"'
                  sh 'dotnet build'
-                 sh 'dotnet-sonarscanner end /d:sonar.login="4ccc5098f12d471a80e9df8999fd3a70ad0296c4"'
+                 sh 'dotnet-sonarscanner end'
             }
           }
         }
