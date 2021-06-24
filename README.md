@@ -6,8 +6,11 @@ docker-compose up -d
 Efetuado testes utilizando Ubuntu 20.04
 ```
 multipass launch --cpus 2 --mem 4G --disk 15G --name sonarqube-test
-multipass shell sonarqube=test
-sudo sysctl -w vm.max_map_count=262144
+multipass shell sonarqube-test
+sudo su
+sysctl -w vm.max_map_count=262144
+wget https://get.jenkins.io/war-stable/2.289.1/jenkins.war
+java -jar jenkins.war --httpPort=9090
 ```
 Preparação da "VM"
 ```
