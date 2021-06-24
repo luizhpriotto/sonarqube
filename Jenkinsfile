@@ -28,6 +28,14 @@ pipeline {
              sh 'dotnet-sonarscanner end /d:sonar.login="4ccc5098f12d471a80e9df8999fd3a70ad0296c4"'           
           }
         }
+	stage('Quality Gate"){
+            timeout(time: 1, unit: 'HOURS') {
+	        def qg = waitForQualityGate()
+		    if (qg.status != 'SUCCESS') {
+		        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+		    }
+	    }
+        }
     }
     post { 
         always { 
