@@ -1,8 +1,15 @@
 
+Iniciando Sonarqube
+```
+docker-compose up -d
+```
 Efetuado testes utilizando Ubuntu 20.04
 ```
 multipass launch --cpus 2 --mem 4G --disk 15G --name sonarqube-test
 multipass shell sonarqube=test
+```
+Preparação da "VM"
+```
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update; \
@@ -13,6 +20,9 @@ wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scann
 unzip sonar-scanner-cli-4.6.2.2472-linux.zip -d /opt
 export PATH=$PATH:/opt/sonar-scanner-4.6.2.2472-linux/bin
 dotnet tool install --global dotnet-sonarscanner
+```
+Testando um projeto Dotnet e um Python
+```
 git  clone https://github.com/prefeiturasp/SME-Aplicativo-Aluno-API.git dotnet
 cd dotnet
 dotnet-sonarscanner begin /k:"Dotnet" /d:sonar.host.url="http://192.168.1.18:9000" /d:sonar.login="4ccc5098f12d471a80e9df8999fd3a70ad0296c4"
