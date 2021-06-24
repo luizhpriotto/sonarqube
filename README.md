@@ -1,3 +1,5 @@
+
+Efetuado testes utilizando Ubuntu 20.04
 ```
 multipass launch --cpus 2 --mem 4G --disk 15G --name sonarqube-test
 multipass shell sonarqube=test
