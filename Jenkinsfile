@@ -1,6 +1,10 @@
 
 pipeline {
-    agent any
+    agent{
+        node{
+	    label 'dotnet'
+	}
+    }
     stages {
         stage('checkout') {
     		steps {
@@ -11,9 +15,9 @@ pipeline {
         		}	
     		}
 	}
-        stage('Example') {
+        stage('Hostname') {
             steps {
-                echo 'Hello World'
+                sh 'hostname'
             }
         }
 	stage('Analise Codigo') {
