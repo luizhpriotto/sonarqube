@@ -42,7 +42,7 @@ sonar-scanner \
   -Dsonar.sources=. \
   -Dsonar.host.url=http://192.168.1.18:9000 \
   -Dsonar.login=b015ac84a610b6453cd81d6b6bf0271ac5c1748e
- 
+ ```
 ### Sonarqube
 
 Iremos inciar um ambiente Jenkins para utilizar o serviço do Sonarqube a fim de validar seu funcionamento.
