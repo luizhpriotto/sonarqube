@@ -125,3 +125,39 @@ http://IP:9090/sonarqube-webhook
 
 A função **withSonarQubeEnv('SonarQube')** injeta as variaveis de conexão ao Sonar.
 A função **waitForQualityGate abortPipeline: true** aguarda os resultados do Sonar e dependedo do resultado, aborta a esteira.
+
+Pipeline:
+
+```
+pipeline {
+    agent{
+        node{
+	    label 'dotnet'
+	}
+    }
+    stages {
+        stage('Hostname') {
+            steps {
+                sh 'hostname'
+            }
+        }
+	stage('Analise Codigo') {
+            steps {
+	        withSonarQubeEnv('SonarQube'){
+                    sh 'echo Analise SonarQube'
+                    sh 'dotnet-sonarscanner begin /k:"Dotnet"'
+                    sh 'dotnet build'
+                    sh 'dotnet-sonarscanner end'
+                }
+            }
+        }
+	stage('Quality Gate'){
+	    steps{
+	        timeout(time: 1, unit: 'HOURS') {
+		    waitForQualityGate abortPipeline: true	
+		}
+            }
+        }
+    }
+}
+```
